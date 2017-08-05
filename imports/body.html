@@ -1,0 +1,33 @@
+<body>
+    <div class="container">
+        <header>
+            <h1>Galery</h1>
+        </header>
+
+       <div class="images">
+            <ul class="gallery">
+                {{#each Images}}
+                    {{> imageThumb}}
+                {{/each}}
+            </ul>
+        </div>
+
+       {{#each Images}}
+           {{> imageLightbox}}
+       {{/each}}
+    </div>
+</body>
+
+<template name="imageThumb">
+    <li>
+        <a href="#{{title}}">
+            <img class="thumbnail" src="{{url}}">
+        </a>
+    </li>
+</template>
+
+<template name="imageLightbox">
+    <a class="lightbox" href="#_" id="{{title}}">
+        <img src="{{url}}">
+    </a>
+</template>
