@@ -1,27 +1,36 @@
 <body>
-<div class="container">
-    <header>
-        <h1>Galery</h1>
-    </header>
-
-    <form class="new-image">
-        <input type="text" name="url" placeholder="URL of the new image"/>
-    </form>
-
     <div class="container">
-        <div id="grid" class="main">
-            <div class="images">
-                <ul class="gallery">
-                    {{#each images}}
-                        {{> imageThumb}}
-                    {{/each}}
-                </ul>
+        <header></header>
+
+        <div class="vertAlign">
+            <div class="vertAlignInt">
+                <div class="wrapper">
+
+                    <h3>Image gallery <span>with Meteor</span></h3>
+
+                    <form class="new-image">
+                        <input type="text" name="url" placeholder="URL of the new image"/>
+                    </form>
+
+                    <div id="gallery" class="galleryFade">
+                        <ul class="gallery">
+                            {{#each images}}
+                                {{> imageThumb}}
+                            {{/each}}
+                        </ul>
+
+                        {{#each images}}
+                            {{> imageLightbox}}
+                        {{/each}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    {{#each images}}
-        {{> imageLightbox}}
-    {{/each}}
-</div>
+    <footer>
+        <a href="https://github.com/leoeberts/Gallery-Meteor">Gallery with Meteor by Leonardo Eberts</a>
+        <i></i>
+        <a href="https://codepen.io/mjdwebdesign/">CSS by @mjdwebdesign</a>
+    </footer>
 </body>
