@@ -1,1 +1,1 @@
-import '../imports/body.js';
+import '../imports/ui/body.js';

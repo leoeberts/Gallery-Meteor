@@ -4,15 +4,19 @@
             <h1>Galery</h1>
         </header>
 
+        <form class="new-image">
+            <input type="text" name="url" placeholder="URL of the new image" />
+        </form>
+
        <div class="images">
             <ul class="gallery">
-                {{#each Images}}
+                {{#each images}}
                     {{> imageThumb}}
                 {{/each}}
             </ul>
         </div>
 
-       {{#each Images}}
+       {{#each images}}
            {{> imageLightbox}}
        {{/each}}
     </div>
@@ -20,14 +24,14 @@
 
 <template name="imageThumb">
     <li>
-        <a href="#{{title}}">
+        <a href="#{{_id}}">
             <img class="thumbnail" src="{{url}}">
         </a>
     </li>
 </template>
 
 <template name="imageLightbox">
-    <a class="lightbox" href="#_" id="{{title}}">
+    <a class="lightbox" href="#_" id="{{_id}}">
         <img src="{{url}}">
     </a>
 </template>
