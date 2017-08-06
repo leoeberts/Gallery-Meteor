@@ -71,21 +71,73 @@ h3 span {
     height: 175px;
 }
 
-#gallery ul li a:hover span {
-    display: block;
+.sliderImage {
+    display: table-cell;
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
 }
 
-#gallery ul li a span {
-    z-index: 10 !important;
-    border-radius: 3px;
+.sliderImage .imageToolbox {
     position: absolute;
-    content: "";
-    display: block;
-    border: 4px solid #8642d7;
-    width: 100%;
-    height: 175px;
-    margin: -4px;
-    display: none;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    padding: 7px;
+    z-index: 1000;
+    top: 60%;
+    left: -80%;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 13px;
+    width: 80%;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    transition: all 0.7s;
+
+}
+
+.sliderImage:hover .imageToolbox {
+    background-color: #8642d7;
+    left: 0px;
+
+}
+
+/*Delete Button*/
+.deleteButton {
+    border-radius: 4px;
+    background-color: #8642d7;
+    border: none;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+}
+
+.deleteButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.deleteButton span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.deleteButton:hover span {
+    padding-right: 25px;
+}
+
+.deleteButton:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 /* Vertical Align */
