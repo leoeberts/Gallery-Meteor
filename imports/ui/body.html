@@ -8,10 +8,6 @@
 
                     <h3>Image gallery <span>with Meteor</span></h3>
 
-                    <form class="new-image">
-                        <input type="text" name="url" placeholder="URL of the new image"/>
-                    </form>
-
                     <div id="gallery" class="galleryFade">
                         <ul class="gallery">
                             {{#each images}}
@@ -26,6 +22,21 @@
             {{> imageLightbox}}
         {{/each}}
     </div>
+
+    <form class="new-image">
+        <label class="scroll addButton material-icons" for="addModal">add_circle</label>
+        <input class="modal-state" id="addModal" name="addModal" type="checkbox"/>
+
+        <div class="modal">
+            <label class="modal__bg" for="addModal"></label>
+
+            <div class="modal__inner">
+                <label class="modal__close" for="addModal"></label>
+                <h3><span>Add an image URL</span></h3>
+                <input class="imageInput" type="text" name="url" placeholder="URL of the new image"/>
+            </div>
+        </div>
+    </form>
 
     <footer>
         <a href="https://github.com/leoeberts/Gallery-Meteor">Gallery with Meteor by Leonardo Eberts</a>

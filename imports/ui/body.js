@@ -21,5 +21,6 @@ Template.body.events({
         Meteor.call('images.insert', url);
 
         target.url.value = '';
+        target.addModal.checked = false;
     },
 });

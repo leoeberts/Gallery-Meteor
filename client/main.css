@@ -1,5 +1,31 @@
-/* Font */
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+/* Font & Icons*/
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.material-icons {
+    font-family: 'Material Icons', serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 150px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
 
 *, html, body {
     padding: 0;
@@ -33,7 +59,6 @@ h3 span {
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
 }
 
 #gallery:hover > ul li {
@@ -64,8 +89,7 @@ h3 span {
 
 #gallery ul li a {
     position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: no-repeat center;
     background-size: cover;
     display: block;
     height: 175px;
@@ -83,7 +107,7 @@ h3 span {
 .sliderImage .imageToolbox {
     position: absolute;
     text-transform: uppercase;
-    font-family: 'Roboto';
+    font-family: 'Roboto', serif;
     padding: 7px;
     z-index: 1000;
     top: 60%;
@@ -94,14 +118,13 @@ h3 span {
     width: 80%;
     -webkit-transition: all 0.7s;
     -moz-transition: all 0.7s;
-    -ms-transition: all 0.7s;
     transition: all 0.7s;
 
 }
 
 .sliderImage:hover .imageToolbox {
     background-color: #8642d7;
-    left: 0px;
+    left: 0;
 
 }
 
@@ -138,6 +161,146 @@ h3 span {
 .deleteButton:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+.scroll {
+    position: fixed;
+    bottom: 6%;
+    right: 2%;
+}
+
+.addButton {
+    color: #8642d7;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+}
+
+
+/*Button Three*/
+.addButton {
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.addButton:hover{
+    background: #b76dff;
+    box-shadow:0px 2px 10px 5px #a989bf;
+    color:#000;
+}
+
+.addButton:after {
+    content: "";
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+/* Add modal */
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    background: rgba(0,0,0, .9);
+    transition: opacity .25s ease;
+}
+
+.modal__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.modal-state {
+    display: none;
+}
+
+.modal-state:checked + .modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-state:checked + .modal .modal__inner {
+    top: 0;
+}
+
+.modal__inner {
+    transition: top .25s ease;
+    position: absolute;
+    top: -20%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    margin: auto;
+    overflow: auto;
+    background: #fff;
+    border-radius: 5px;
+    padding: 1em 2em;
+    height: 10%;
+}
+
+.modal__close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    width: 1.1em;
+    height: 1.1em;
+    cursor: pointer;
+}
+
+.modal__close:after,
+.modal__close:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 1.5em;
+    background: #8642d7;
+    display: block;
+    transform: rotate(45deg);
+    left: 50%;
+    margin: -3px 0 0 -1px;
+    top: 0;
+}
+
+.modal__close:hover:after,
+.modal__close:hover:before {
+    background: #a989bf;
+}
+
+.modal__close:before {
+    transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+
+    .modal__inner {
+        width: 90%;
+        height: 90%;
+        box-sizing: border-box;
+    }
+}
+
+/* imageInput */
+.imageInput {
+    width: 90%;
+    color: #8642d7;
 }
 
 /* Vertical Align */
@@ -195,7 +358,6 @@ h3 span {
 }
 
 .view-back button {
-    display: bock;
     font-size: 18px;
     color: rgba(255, 255, 255, 0.4);
     position: absolute;
