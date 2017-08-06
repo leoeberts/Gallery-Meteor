@@ -1,7 +1,6 @@
 import { Template } from 'meteor/templating';
 
-import '../api3/images.js';
-import {Images} from "../api/images";
+import {Images} from "../api/images.js";
 
 import './body.html';
 
