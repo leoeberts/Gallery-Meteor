@@ -1,0 +1,39 @@
+<template name="imageThumb">
+    <li>
+        <a href="#{{_id}}">
+            <img class="thumbnail" src="{{url}}">
+        </a>
+        <button class="delete view-back">&times;</button>
+    </li>
+
+    <!--<a href="#_id">
+        <div class="view">
+            <div class="view-back">
+                <span data-icon="A">566</span>
+                <span data-icon="B">124</span>
+                <button class="delete">&times;</button>
+            </div>
+
+            <div class="slice s1" style="background-image: url({{url}});">
+                <span class="overlay"></span>
+                <div class="slice s2" style="background-image: url({{url}});">
+                    <span class="overlay"></span>
+                    <div class="slice s3" style="background-image: url({{url}});">
+                        <span class="overlay"></span>
+                        <div class="slice s4" style="background-image: url({{url}});">
+                            <span class="overlay"></span>
+                            <div class="slice s5" style="background-image: url({{url}});"><span
+                                    class="overlay"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>-->
+</template>
+
+<template name="imageLightbox">
+    <a class="lightbox" href="#_" id="{{_id}}">
+        <img src="{{url}}">
+    </a>
+</template>
