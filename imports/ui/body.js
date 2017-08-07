@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-
 import {Images} from "../api/images.js";
 
 import './body.html';
@@ -17,10 +16,11 @@ Template.body.events({
         event.preventDefault();
 
         const target = event.target;
-        const url = target.url.value;
-        Meteor.call('images.insert', url);
+        Meteor.call('images.insert', target.url.value, target.title.value, target.description.value);
 
         target.url.value = '';
+        target.title.value = '';
+        target.description.value = '';
         target.addModal.checked = false;
     },
 });

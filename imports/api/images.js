@@ -6,11 +6,16 @@ export const Images = new Mongo.Collection('images');
 
 
 Meteor.methods({
-    'images.insert'(text) {
-        check(text, String);
+    'images.insert'(url, title, description) {
+        check(url, String);
+        check(title, String);
+        check(description, String);
 
         Images.insert({
-            url: text,
+            url: url,
+            title: title,
+            description: description,
+            createAt: new Date(),
         });
     },
 });

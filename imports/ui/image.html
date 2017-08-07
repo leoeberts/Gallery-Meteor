@@ -1,13 +1,16 @@
 <template name="imageThumb">
     <li>
-        <div class="slider-image">
+        <div class="slider-delete">
             <i class="material-icons">broken_image</i>
             <a href="#{{_id}}" style="background-image: url('{{url}}')">
                 <span></span>
             </a>
-            <div class="sliderButton">
-                <button class="delete view-back image-toolbox delete-button">
+            <div>
+                <button class="view-back delete-button">
                     <span>Delete this image</span>
+                </button>
+                <button class="view-back slider-title">
+                    <span>{{title}}</span>
                 </button>
             </div>
         </div>
