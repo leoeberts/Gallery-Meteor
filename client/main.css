@@ -53,6 +53,11 @@ h3 span {
     color: #8642d7;
 }
 
+/* Filter*/
+.filter {
+
+}
+
 /* Gallery */
 .gallery-fade ul li {
     transition: all .2s ease-in-out;
@@ -71,6 +76,7 @@ h3 span {
 
 #gallery ul {
     list-style-type: none;
+    margin-top: 15px;
 }
 
 #gallery ul li {
@@ -93,6 +99,8 @@ h3 span {
     background-size: cover;
     display: block;
     height: 175px;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 /*Image title*/
@@ -102,7 +110,7 @@ h3 span {
     font-family: 'Roboto', serif;
     padding: 7px;
     z-index: 1000;
-    top: 0%;
+    top: 0;
     right: -80%;
     color: #ffffff;
     font-weight: 300;
@@ -151,7 +159,7 @@ h3 span {
 .slider-delete {
     display: table-cell;
     width: 250px;
-    height: 250px;
+    height: auto;
     background-size: cover;
     overflow: hidden;
     position: relative;
@@ -163,7 +171,7 @@ h3 span {
     font-family: 'Roboto', serif;
     padding: 7px;
     z-index: 1000;
-    top: 60%;
+    bottom: 0;
     left: -80%;
     color: #ffffff;
     font-weight: 300;
@@ -263,7 +271,7 @@ h3 span {
 
 .add-button:hover{
     background: #b76dff;
-    box-shadow:0px 2px 10px 5px #a989bf;
+    box-shadow:0 2px 10px 5px #a989bf;
     color:#000;
 }
 
