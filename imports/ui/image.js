@@ -1,6 +1,6 @@
-import { Template } from 'meteor/templating';
+import {Template} from 'meteor/templating';
 
-import { Images } from '../api/images.js';
+import {Images} from '../api/images.js';
 
 import './image.html';
 
@@ -9,4 +9,3 @@ Template.imageThumb.events({
         Images.remove(this._id);
     },
 });
-

@@ -2,15 +2,22 @@
 <div class="container">
     <header></header>
 
+    <div class="header">
+        <h3>Image gallery
+            <span>with Meteor</span>
+            <span class="login">{{> loginButtons}}</span>
+        </h3>
+    </div>
+
     <div class="vertical-align">
         <div class="vertical-align-interior">
             <div class="wrapper">
-
-                <h3>Image gallery <span>with Meteor</span></h3>
-                <label class="hide-broken-images filter">
-                    <input type="checkbox" />
-                    Hide broken images
-                </label>
+                {{#if currentUser}}
+                    <label class="show-only-private-images filter">
+                        <input type="checkbox"/>
+                        Show only private images
+                    </label>
+                {{/if}}
 
                 <div id="gallery" class="gallery-fade">
                     <ul class="gallery">
@@ -27,25 +34,29 @@
     {{/each}}
 </div>
 
-<form class="new-image">
-    <label class="scroll add-button material-icons" for="add-modal">add_circle</label>
-    <input class="modal-state" id="add-modal" name="addModal" type="checkbox"/>
+{{#if currentUser}}
+    <form class="new-image">
+        <label class="scroll add-button material-icons" for="add-modal">add_circle</label>
+        <input class="modal-state" id="add-modal" name="addModal" type="checkbox"/>
 
-    <div class="modal">
-        <label class="modal-exterior" for="add-modal"></label>
+        <div class="modal">
+            <label class="modal-exterior" for="add-modal"></label>
 
-        <div class="modal-interior">
-            <label class="modal-close" for="add-modal"></label>
-            <h3><span>Add an image URL</span></h3>
-            <input class="image-input new-image" type="text" name="url" placeholder="URL of the new image"/>
-            <h3><span>Add a title</span></h3>
-            <input class="image-input new-image" type="text" name="title" placeholder="Title for the new image"/>
-            <h3><span>Add a description</span></h3>
-            <input class="image-input new-image" type="text" name="description" placeholder="Description for the new image"/>
-            <input type="submit" style="visibility: hidden">
+            <div class="modal-interior">
+                <label class="modal-close" for="add-modal"></label>
+                <h3><span>Add an image URL</span></h3>
+                <input class="image-input new-image" name="url" placeholder="URL of the new image"/>
+                <h3><span>Add a title</span></h3>
+                <input class="image-input new-image" name="title" placeholder="Title for the new image"/>
+                <h3><span>Add a description</span></h3>
+                <input class="image-input new-image" name="description" placeholder="Description for the new image"/>
+                <h3 class="checkbox-label"><span><label for="private-image">Private image</label></span></h3>
+                <input class="image-input new-image checkbox" type="checkbox" id="private-image" name="privateImage"/>
+                <input type="submit" style="visibility: hidden">
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+{{/if}}
 
 <footer>
     <a href="https://github.com/leoeberts/Gallery-Meteor">Gallery with Meteor by Leonardo Eberts</a>
