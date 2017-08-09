@@ -4,6 +4,17 @@ import {check} from 'meteor/check';
 
 export const Images = new Mongo.Collection('images');
 
+if (Meteor.isServer) {
+    Meteor.publish('images', function imagesPublication() {
+        return Images.find({
+            $or: [
+                {privateImage: {$ne: true}},
+                {owner: this.userId},
+            ],
+        });
+    });
+}
+
 Meteor.methods({
     'images.insert'(url, title, description, privateImage) {
         checkUserLoggedIn();
@@ -24,6 +35,8 @@ Meteor.methods({
     },
     'images.remove'(imageId) {
         check(imageId, String);
+
+        checkAuthorization(imageId);
         Images.remove(imageId);
     },
 });
@@ -40,5 +53,11 @@ function isUrlAnImage() {
         let regexp = /(?:jpg|gif|png|jpeg)/g;
         return regexp.test(url);
     });
+}
+
+function checkAuthorization(imageId) {
+    if (Images.findOne(imageId).owner !== Meteor.userId()) {
+        throw new Meteor.Error('not-authorized');
+    }
 }
 

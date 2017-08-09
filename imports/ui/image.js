@@ -8,3 +8,4 @@ Template.imageThumb.events({
         Meteor.call('images.remove', this._id);
     },
 });
+

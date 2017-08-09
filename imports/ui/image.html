@@ -2,7 +2,7 @@
     <li>
         <div class="slider-delete">
             <i class="material-icons">broken_image</i>
-            <a href="#{{_id}}" style="background-image: url('{{url}}')">
+            <a class="{{#if privateImage}}privateImage{{/if}}" href="#{{_id}}" style="background-image: url('{{url}}')">
                 <span></span>
             </a>
             <div>
@@ -18,7 +18,7 @@
 </template>
 
 <template name="imageLightbox">
-    <a class="lightbox" href="#_" id="{{_id}}">
+    <a class="lightbox {{#if privateImage}}privateImage{{/if}}" href="#_" id="{{_id}}">
         <img src="{{url}}">
     </a>
 </template>
