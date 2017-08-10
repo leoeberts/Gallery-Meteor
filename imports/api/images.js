@@ -17,11 +17,12 @@ if (Meteor.isServer) {
 
 Meteor.methods({
     'images.insert'(url, title, description, privateImage) {
-        checkUserLoggedIn();
-        check(url, isUrlAnImage());
+        checkUserLoggedIn(this.userId);
+        check(isUrlAnImage(url), true);
         check(title, String);
-        check(true, title.length > 0);
+        check(title.length > 0, true);
         check(description, String);
+        check(privateImage, Boolean);
 
         Images.insert({
             url: url,
@@ -29,34 +30,31 @@ Meteor.methods({
             description: description,
             privateImage: privateImage,
             createAt: new Date(),
-            owner: Meteor.userId(),
-            username: Meteor.user().username,
+            owner: this.userId,
+            username: this.userId.username,
         });
     },
     'images.remove'(imageId) {
         check(imageId, String);
-
-        checkAuthorization(imageId);
+        checkAuthorization(imageId, this.userId);
         Images.remove(imageId);
     },
 });
 
-function checkUserLoggedIn() {
-    if (!Meteor.userId()) {
+function checkUserLoggedIn(userId) {
+    if (!userId) {
         throw new Meteor.Error('not-authorized')
     }
 }
 
-function isUrlAnImage() {
-    return Match.Where(function (url) {
-        check(url, String);
-        let regexp = /(?:jpg|gif|png|jpeg)/g;
-        return regexp.test(url);
-    });
+function isUrlAnImage(url) {
+    let regexp = /(?:jpg|gif|png|jpeg)/g;
+    return regexp.test(url);
 }
 
-function checkAuthorization(imageId) {
-    if (Images.findOne(imageId).owner !== Meteor.userId()) {
+function checkAuthorization(imageId, userId) {
+    const image = Images.findOne(imageId);
+    if (image.owner !== userId) {
         throw new Meteor.Error('not-authorized');
     }
 }
